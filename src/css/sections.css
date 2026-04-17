@@ -618,10 +618,11 @@
   padding: var(--spacing-xl) 0;
 }
 
-/* --- Grid 4 colunas --- */
+/* --- Grid centralizado --- */
 .numeros__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, minmax(200px, 320px));
+  justify-content: center;
 }
 
 .numeros__stat {
