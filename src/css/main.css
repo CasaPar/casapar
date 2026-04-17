@@ -1,0 +1,582 @@
+/* =============================================================================
+   main.css — Design System Global · CasaPar
+   Luxury dark editorial | Plus Jakarta Sans (extraída da referência)
+   Gerado por Sub-Agente 1 — NÃO EDITAR sem atualizar PROJECT_SPEC.md
+   ============================================================================= */
+
+
+/* =============================================================================
+   1. GOOGLE FONTS IMPORT
+   ============================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,700;1,800&display=swap');
+
+
+/* =============================================================================
+   2. CSS CUSTOM PROPERTIES (VARIÁVEIS)
+   Fonte de verdade: PROJECT_SPEC.md
+   ============================================================================= */
+
+:root {
+
+  /* ---- CORES BASE ---- */
+  --color-bg:           #080706;   /* Preto amanteigado — fundo principal */
+  --color-bg-card:      #0F0E0C;   /* Cards e seções alternadas */
+  --color-bg-elevated:  #161410;   /* Elementos elevados, modais, destaque */
+  --color-border:       #2A2620;   /* Bordas sutis entre seções */
+  --color-border-gold:  #3D3020;   /* Bordas com toque dourado */
+
+  /* ---- TEXTO ---- */
+  --color-text-primary:   #F5EED8; /* Branco cremoso — texto principal */
+  --color-text-secondary: #9E9080; /* Cinza quente — subtextos, labels */
+  --color-text-muted:     #5C5548; /* Texto de apoio, placeholders */
+
+  /* ---- ACENTO — OURO ---- */
+  --color-gold:         #BEAD85;   /* Ouro principal — cor da marca */
+  --color-gold-light:   #D9CBA8;   /* Ouro claro — hover, highlights */
+  --color-gold-dark:    #8A7A55;   /* Ouro escuro — sombras, subtexto dourado */
+  --color-gold-muted:   #221F15;   /* Fundo dourado muted (badges, tags) */
+
+  /* ---- UTILITÁRIOS ---- */
+  --color-white:        #FFFFFF;
+  --color-overlay:      rgba(8, 7, 6, 0.85);  /* Overlay sobre imagens */
+
+  /* ---- TIPOGRAFIA — FAMÍLIAS ---- */
+  --font-display: 'Plus Jakarta Sans', sans-serif;  /* Headings — bold/800, extraída da referência */
+  --font-caps:    'Plus Jakarta Sans', sans-serif;  /* Labels/tags — 700 uppercase */
+  --font-body:    'Plus Jakarta Sans', sans-serif;  /* Corpo, nav, botões — 300/400 */
+
+  /* ---- TIPOGRAFIA — ESCALA ---- */
+  --text-xs:   0.75rem;    /*  12px — labels, micro-texto */
+  --text-sm:   0.875rem;   /*  14px — captions, rodapé */
+  --text-base: 1rem;       /*  16px — corpo padrão */
+  --text-lg:   1.125rem;   /*  18px — corpo destacado */
+  --text-xl:   1.25rem;    /*  20px — subtítulos */
+  --text-2xl:  1.5rem;     /*  24px — títulos de seção pequenos */
+  --text-3xl:  2rem;       /*  32px — títulos de seção */
+  --text-4xl:  2.75rem;    /*  44px — headings secundários */
+  --text-5xl:  3.75rem;    /*  60px — headings principais */
+  --text-6xl:  5rem;       /*  80px — display hero desktop */
+  --text-7xl:  6.5rem;     /* 104px — display hero XL (1440px+) */
+
+  /* ---- ESPAÇAMENTOS ---- */
+  --spacing-xs:  0.5rem;   /*   8px */
+  --spacing-sm:  1rem;     /*  16px */
+  --spacing-md:  1.5rem;   /*  24px */
+  --spacing-lg:  2.5rem;   /*  40px */
+  --spacing-xl:  4rem;     /*  64px */
+  --spacing-2xl: 6rem;     /*  96px */
+  --spacing-3xl: 8rem;     /* 128px */
+  --spacing-4xl: 10rem;    /* 160px */
+
+  /* ---- PADDING DE SEÇÃO ---- */
+  --section-padding-y: var(--spacing-2xl);  /* 96px top/bottom padrão */
+  --section-padding-x: 1.5rem;              /* Mobile */
+
+  /* ---- CONTAINERS ---- */
+  --container-max:    1280px;
+  --container-narrow: 860px;
+
+  /* ---- GRID ---- */
+  --grid-2:    repeat(2, 1fr);
+  --grid-3:    repeat(3, 1fr);
+  --gap-cards: 1.5rem;   /* 24px entre cards */
+  --gap-section: 4rem;   /* 64px entre blocos dentro da seção */
+
+  /* ---- BREAKPOINTS (referência — usar em media queries) ---- */
+  --bp-sm:  480px;
+  --bp-md:  768px;
+  --bp-lg:  1024px;
+  --bp-xl:  1280px;
+  --bp-2xl: 1440px;
+
+  /* ---- ANIMAÇÕES ---- */
+  --duration-fast:   150ms;
+  --duration-normal: 300ms;
+  --duration-slow:   600ms;
+  --duration-reveal: 700ms;
+  --easing: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ---- BORDER RADIUS ---- */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+
+  /* ---- Z-INDEX ---- */
+  --z-navbar: 100;
+
+}
+
+
+/* =============================================================================
+   3. RESET E BASE GLOBAL
+   ============================================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Previne travamento de scroll ao abrir menu mobile */
+  scroll-padding-top: 80px;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: var(--text-base);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Seleção de texto — dourado */
+::selection {
+  background-color: var(--color-gold-muted);
+  color: var(--color-gold);
+}
+
+/* Imagens responsivas por padrão */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Herança de fonte em inputs */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove listagens padrão */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove sublinhado padrão de links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Evita overflow de texto longo */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* Screen reader only — acessibilidade */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+
+/* =============================================================================
+   4. CONTAINER E LAYOUT
+   ============================================================================= */
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+/* Container estreito — para seções de texto denso */
+.container--narrow {
+  max-width: var(--container-narrow);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+/* Padding vertical padrão de todas as seções */
+section {
+  padding: var(--section-padding-y) 0;
+}
+
+
+/* =============================================================================
+   5. TIPOGRAFIA GLOBAL
+   ============================================================================= */
+
+/* --- Headings --- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: var(--text-6xl);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+}
+
+h4 {
+  font-size: var(--text-xl);
+  font-weight: 600;
+}
+
+/* Classe utilitária para headings de seção */
+.section-heading {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--spacing-lg);
+}
+
+/* --- Parágrafos --- */
+p {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: var(--text-base);
+  line-height: 1.75;
+  color: var(--color-text-secondary);
+}
+
+/* --- Itálico decorativo (palavra-chave no hero) --- */
+em,
+.text-italic {
+  font-style: italic;
+  font-family: var(--font-display);
+}
+
+/* --- Labels / Tags em Cinzel caps --- */
+.label,
+.tag-text {
+  font-family: var(--font-caps);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-text-secondary);
+}
+
+
+/* =============================================================================
+   6. COMPONENTES GLOBAIS
+   ============================================================================= */
+
+/* --- Botão Primário --- */
+.btn-primary {
+  background: var(--color-gold);
+  color: #080706;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 16px 36px;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition:
+    background  var(--duration-normal) var(--easing),
+    transform   var(--duration-fast)   var(--easing),
+    box-shadow  var(--duration-normal) var(--easing);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: var(--color-gold-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(201, 164, 88, 0.25);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+/* --- Botão Secundário (outline) --- */
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--color-gold-dark);
+  color: var(--color-gold);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 16px 36px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition:
+    background    var(--duration-normal) var(--easing),
+    border-color  var(--duration-normal) var(--easing),
+    transform     var(--duration-fast)   var(--easing);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background: var(--color-gold-muted);
+  border-color: var(--color-gold);
+  transform: translateY(-1px);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+/* --- Tag / Badge --- */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-gold-muted);
+  border: 1px solid var(--color-gold-dark);
+  color: var(--color-gold);
+  font-family: var(--font-caps);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  line-height: 1;
+  margin-bottom: var(--spacing-md);
+}
+
+/* --- Separador de Seção --- */
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 0;
+}
+
+
+/* =============================================================================
+   7. ANIMAÇÕES DE SCROLL REVEAL
+   ============================================================================= */
+
+/* Estado inicial — elemento fora de cena */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity   var(--duration-reveal) var(--easing),
+    transform var(--duration-reveal) var(--easing);
+}
+
+/* Estado visível — quando IntersectionObserver adiciona a classe */
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Stagger — escalonamento entre filhos diretos --- */
+.reveal-stagger > *:nth-child(1) { transition-delay:   0ms; }
+.reveal-stagger > *:nth-child(2) { transition-delay: 100ms; }
+.reveal-stagger > *:nth-child(3) { transition-delay: 200ms; }
+.reveal-stagger > *:nth-child(4) { transition-delay: 300ms; }
+.reveal-stagger > *:nth-child(5) { transition-delay: 400ms; }
+.reveal-stagger > *:nth-child(6) { transition-delay: 500ms; }
+
+/* Quando o stagger container é marcado como visível, seus filhos também animam */
+.reveal-stagger.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Filhos do stagger também começam em .reveal */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity   var(--duration-reveal) var(--easing),
+    transform var(--duration-reveal) var(--easing);
+}
+
+
+/* =============================================================================
+   8. TEXTURA DE FUNDO — MOTIVO XADREZ SUTIL
+   Opacity 0.03 — apenas decorativo, nunca dominante
+   ============================================================================= */
+
+.bg-chess-texture {
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='10' height='10' fill='%23C9A458' opacity='0.03'/%3E%3Crect x='10' y='10' width='10' height='10' fill='%23C9A458' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+
+/* =============================================================================
+   9. HOVER EM CARDS — Padrão global (sem layout shift)
+   ============================================================================= */
+
+.card-hover {
+  transition:
+    border-color  var(--duration-normal) var(--easing),
+    background    var(--duration-normal) var(--easing),
+    box-shadow    var(--duration-normal) var(--easing);
+}
+
+.card-hover:hover {
+  border-color: var(--color-gold-dark);
+  box-shadow:
+    0 0 0 1px var(--color-gold-dark),
+    0 8px 32px rgba(201, 164, 88, 0.08);
+}
+
+
+/* =============================================================================
+   10. RESPONSIVIDADE BASE
+   ============================================================================= */
+
+/* --- Tablet — até 1024px --- */
+@media (max-width: 1024px) {
+  h1 {
+    font-size: var(--text-5xl);
+  }
+
+  .container,
+  .container--narrow {
+    padding: 0 var(--spacing-md);
+  }
+}
+
+/* --- Mobile — até 768px --- */
+@media (max-width: 768px) {
+  section {
+    padding: 80px 0;
+  }
+
+  h1 {
+    font-size: var(--text-4xl);
+    line-height: 1.1;
+  }
+
+  h2,
+  .section-heading {
+    font-size: var(--text-3xl);
+  }
+
+  h3 {
+    font-size: var(--text-xl);
+  }
+
+  .container,
+  .container--narrow {
+    padding: 0 var(--spacing-sm);
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* --- Mobile pequeno — até 480px --- */
+@media (max-width: 480px) {
+  h1 {
+    font-size: var(--text-3xl);
+  }
+
+  h2,
+  .section-heading {
+    font-size: var(--text-2xl);
+  }
+}
+
+/* --- Acessibilidade: reduzir movimento --- */
+@media (prefers-reduced-motion: reduce) {
+  /* Desativa scroll reveal para quem prefere menos movimento */
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .reveal-stagger > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    transition-delay: 0ms;
+  }
+
+  /* Desativa todas as animações e transições */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* =============================================================================
+   FIM — main.css
+   Para estilos específicos de seção, veja:
+   · navbar.css    → Navegação
+   · hero.css      → Seção hero
+   · sections.css  → Todas as seções internas
+   · footer.css    → Rodapé e WhatsApp float
+   ============================================================================= */

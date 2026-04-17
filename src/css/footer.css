@@ -1,0 +1,299 @@
+/* =============================================================================
+   footer.css — CTA Final · Footer · WhatsApp Float · CasaPar
+   Luxury dark editorial | Cormorant Garamond · Cinzel · Jost
+   ============================================================================= */
+
+
+/* =============================================================================
+   1. CTA FINAL
+   ============================================================================= */
+
+#cta-final {
+  padding: var(--section-padding-y) 0;
+}
+
+.cta-final__inner {
+  text-align: center;
+  padding: var(--spacing-3xl) 0;
+}
+
+.cta-final__line {
+  border: none;
+  border-top: 1px solid var(--color-gold);
+  opacity: 0.3;
+  margin: 0 auto var(--spacing-xl);
+  max-width: 80px;
+}
+
+.cta-final__headline {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+  margin: var(--spacing-md) auto var(--spacing-lg);
+  max-width: 700px;
+}
+
+.cta-final__subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 300;
+  color: var(--color-text-secondary);
+  max-width: 540px;
+  margin: 0 auto var(--spacing-xl);
+  line-height: 1.75;
+}
+
+.cta-final__btn {
+  display: inline-flex;
+  margin-bottom: var(--spacing-md);
+}
+
+.cta-final__risk {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  max-width: 400px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+
+/* =============================================================================
+   2. FOOTER
+   ============================================================================= */
+
+#footer {
+  padding: var(--spacing-3xl) 0 var(--spacing-xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.footer__top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: var(--spacing-2xl);
+  margin-bottom: var(--spacing-2xl);
+  align-items: start;
+}
+
+/* --- Marca / Logo --- */
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.footer__tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* --- Navegação --- */
+.footer__nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer__nav a {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--easing);
+}
+
+.footer__nav a:hover {
+  color: var(--color-text-primary);
+}
+
+.footer__nav a:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* --- Contato --- */
+.footer__contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer__contact p {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* --- Redes sociais --- */
+.footer__social {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: var(--spacing-sm);
+}
+
+.footer__social a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--easing);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 400;
+}
+
+.footer__social a:hover {
+  color: var(--color-gold);
+}
+
+.footer__social a:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+.footer__social svg {
+  flex-shrink: 0;
+}
+
+/* --- Rodapé inferior --- */
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--spacing-lg);
+}
+
+.footer__bottom p {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+
+/* =============================================================================
+   3. WHATSAPP FLUTUANTE
+   ============================================================================= */
+
+#whatsapp-float {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 90;
+}
+
+.whatsapp-float__btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: white;
+  padding: 14px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+  transition:
+    transform    var(--duration-fast)   var(--easing),
+    box-shadow   var(--duration-fast)   var(--easing);
+}
+
+.whatsapp-float__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-float__btn:focus-visible {
+  outline: 2px solid #25D366;
+  outline-offset: 3px;
+}
+
+.whatsapp-float__btn svg {
+  flex-shrink: 0;
+}
+
+
+/* =============================================================================
+   4. RESPONSIVIDADE
+   ============================================================================= */
+
+/* --- Tablet — até 1024px --- */
+@media (max-width: 1024px) {
+  .footer__top {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .footer__brand {
+    grid-column: 1 / -1;
+  }
+}
+
+/* --- Mobile — até 768px --- */
+@media (max-width: 768px) {
+  .footer__top {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .footer__brand {
+    grid-column: auto;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .cta-final__headline {
+    font-size: var(--text-3xl);
+  }
+
+  .cta-final__inner {
+    padding: var(--spacing-2xl) 0;
+  }
+
+  /* WhatsApp flutuante — mobile: só ícone circular */
+  #whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .whatsapp-float__btn span {
+    display: none;
+  }
+
+  .whatsapp-float__btn {
+    padding: 16px;
+    border-radius: 50%;
+  }
+}
+
+/* --- Mobile pequeno — até 480px --- */
+@media (max-width: 480px) {
+  .cta-final__headline {
+    font-size: var(--text-2xl);
+  }
+}
+
+
+/* =============================================================================
+   FIM — footer.css
+   ============================================================================= */
