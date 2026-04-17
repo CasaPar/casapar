@@ -21,7 +21,7 @@
   border: none;
   border-top: 1px solid var(--color-gold);
   opacity: 0.3;
-  margin: 0 auto var(--spacing-md);
+  margin: 0 auto var(--spacing-sm);
   max-width: 80px;
 }
 
@@ -31,7 +31,7 @@
   font-weight: 500;
   line-height: 1.15;
   color: var(--color-text-primary);
-  margin: var(--spacing-sm) auto var(--spacing-md);
+  margin: var(--spacing-xs) auto var(--spacing-sm);
   max-width: 700px;
 }
 
@@ -41,13 +41,13 @@
   font-weight: 300;
   color: var(--color-text-secondary);
   max-width: 540px;
-  margin: 0 auto var(--spacing-md);
+  margin: 0 auto var(--spacing-sm);
   line-height: 1.75;
 }
 
 .cta-final__btn {
   display: inline-flex;
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
 }
 
 .cta-final__risk {
