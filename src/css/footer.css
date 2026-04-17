@@ -9,12 +9,12 @@
    ============================================================================= */
 
 #cta-final {
-  padding: var(--section-padding-y) 0;
+  padding: var(--spacing-lg) 0;
 }
 
 .cta-final__inner {
   text-align: center;
-  padding: var(--spacing-2xl) 0;
+  padding: var(--spacing-lg) 0;
 }
 
 .cta-final__line {
