@@ -308,9 +308,9 @@ em,
 /* --- Botão Primário --- */
 .btn-primary {
   background: var(--color-gold);
-  color: #080706;
+  color: #000000 !important;
   font-family: var(--font-body);
-  font-weight: 600;
+  font-weight: 700;
   font-size: var(--text-xs);
   text-transform: uppercase;
   letter-spacing: 0.12em;
