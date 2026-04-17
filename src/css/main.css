@@ -70,7 +70,7 @@
   --spacing-4xl: 10rem;    /* 160px */
 
   /* ---- PADDING DE SEÇÃO ---- */
-  --section-padding-y: var(--spacing-2xl);  /* 96px top/bottom padrão */
+  --section-padding-y: var(--spacing-xl);   /* 64px top/bottom padrão */
   --section-padding-x: 1.5rem;              /* Mobile */
 
   /* ---- CONTAINERS ---- */
