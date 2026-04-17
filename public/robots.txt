@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://casapar.com.br/sitemap.xml
