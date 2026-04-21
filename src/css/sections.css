@@ -60,6 +60,15 @@
   text-transform: uppercase;
 }
 
+.problema__title {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
 .problema__item p {
   font-family: var(--font-body);
   font-size: var(--text-base);

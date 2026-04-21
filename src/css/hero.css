@@ -121,8 +121,16 @@
 
 .hero__tag {
   margin-bottom: var(--spacing-lg);
-  /* Entrada escalonada */
   animation: fade-up 0.7s 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.hero__date {
+  margin-top: var(--spacing-xs);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.04em;
 }
 
 

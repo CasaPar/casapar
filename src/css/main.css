@@ -36,6 +36,8 @@
   --color-gold-light:   #D9CBA8;   /* Ouro claro — hover, highlights */
   --color-gold-dark:    #8A7A55;   /* Ouro escuro — sombras, subtexto dourado */
   --color-gold-muted:   #221F15;   /* Fundo dourado muted (badges, tags) */
+  --color-cta:          #C8860A;   /* Âmbar vivo — botões de ação/compra */
+  --color-cta-hover:    #D4971A;   /* Âmbar hover */
 
   /* ---- UTILITÁRIOS ---- */
   --color-white:        #FFFFFF;
@@ -307,7 +309,7 @@ em,
 
 /* --- Botão Primário --- */
 .btn-primary {
-  background: var(--color-gold);
+  background: var(--color-cta);
   color: #000000 !important;
   font-family: var(--font-body);
   font-weight: 700;
@@ -331,7 +333,7 @@ em,
 }
 
 .btn-primary:hover {
-  background: var(--color-gold-light);
+  background: var(--color-cta-hover);
   transform: translateY(-1px);
   box-shadow: 0 4px 20px rgba(201, 164, 88, 0.25);
 }
