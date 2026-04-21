@@ -310,7 +310,7 @@ em,
 /* --- Botão Primário --- */
 .btn-primary {
   background: var(--color-cta);
-  color: #000000 !important;
+  color: #ffffff !important;
   font-family: var(--font-body);
   font-weight: 700;
   font-size: var(--text-xs);
