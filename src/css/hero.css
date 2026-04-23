@@ -412,7 +412,40 @@
       linear-gradient(to bottom, rgba(8, 7, 6, 0.75) 0%, transparent 25%);
   }
 
+  /* Badge do protocolo — permite quebra de linha no mobile */
+  .hero__protocol-badge {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
 
+  .hero__protocol-name,
+  .hero__protocol-type {
+    white-space: normal;
+  }
+
+  .hero__protocol-divider {
+    display: none;
+  }
+
+  .hero__protocol-type {
+    width: 100%;
+    padding-top: 2px;
+    border-top: 1px solid rgba(200, 160, 32, 0.20);
+  }
+
+  /* Badge da data — empilha em duas linhas se necessário */
+  .hero__date-badge {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .hero__date-dot {
+    display: none;
+  }
+
+  .hero__date-detail {
+    width: 100%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
