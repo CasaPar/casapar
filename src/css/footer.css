@@ -9,7 +9,25 @@
    ============================================================================= */
 
 #cta-final {
-  padding: var(--spacing-md) 0;
+  padding: var(--spacing-2xl) 0;
+  background: linear-gradient(160deg, #0F0D07 0%, #1C1A0C 35%, #211E0E 50%, #1C1A0C 65%, #0F0D07 100%);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(190, 173, 133, 0.25);
+  border-bottom: 1px solid rgba(190, 173, 133, 0.15);
+}
+
+/* Brilho central decorativo — foco visual no CTA */
+#cta-final::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--color-gold) 50%, transparent 100%);
+  opacity: 0.5;
 }
 
 .cta-final__inner {
@@ -27,12 +45,13 @@
 
 .cta-final__headline {
   font-family: var(--font-display);
-  font-size: var(--text-4xl);
-  font-weight: 500;
-  line-height: 1.15;
+  font-size: var(--text-5xl);
+  font-weight: 700;
+  line-height: 1.1;
   color: var(--color-text-primary);
-  margin: var(--spacing-xs) auto var(--spacing-sm);
-  max-width: 700px;
+  letter-spacing: -0.025em;
+  margin: var(--spacing-sm) auto var(--spacing-md);
+  max-width: 760px;
 }
 
 .cta-final__subtitle {

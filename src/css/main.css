@@ -32,12 +32,22 @@
   --color-text-muted:     #5C5548; /* Texto de apoio, placeholders */
 
   /* ---- ACENTO — OURO ---- */
-  --color-gold:         #BEAD85;   /* Ouro principal — cor da marca */
-  --color-gold-light:   #D9CBA8;   /* Ouro claro — hover, highlights */
-  --color-gold-dark:    #8A7A55;   /* Ouro escuro — sombras, subtexto dourado */
-  --color-gold-muted:   #221F15;   /* Fundo dourado muted (badges, tags) */
-  --color-cta:          #C8860A;   /* Âmbar vivo — botões de ação/compra */
-  --color-cta-hover:    #D4971A;   /* Âmbar hover */
+  --color-gold:         #C8A020;   /* Ouro quente — alinhado com as CTAs */
+  --color-gold-light:   #E8C530;   /* Ouro claro — hover, highlights */
+  --color-gold-dark:    #8A6A10;   /* Ouro escuro — sombras, bordas sutis */
+  --color-gold-muted:   #1E1800;   /* Fundo dourado muted (badges, tags) */
+  --color-cta:          #B8902A;   /* Ouro metálico — botões de ação/compra */
+  --color-cta-hover:    #CFA83A;   /* Ouro hover */
+
+  /* ---- BORDÔ / VINHO ---- */
+  --color-burdo:        #7D2535;   /* Bordô principal — cor da marca */
+  --color-burdo-light:  #C05570;   /* Bordô claro — texto accent em fundo escuro */
+  --color-burdo-bg:     #110408;   /* Fundo bordô — muito escuro, quebrando monotonia */
+  --color-burdo-tint:   #1C0912;   /* Cards em contexto bordô */
+  --color-burdo-border: #3A1020;   /* Bordas em contexto bordô */
+
+  /* ---- FUNDO ÂMBAR/OURO (seções alternadas quentes) ---- */
+  --color-bg-warm:      #0D0B05;   /* Levemente amanteigado — contraste sutil com preto */
 
   /* ---- UTILITÁRIOS ---- */
   --color-white:        #FFFFFF;
@@ -72,7 +82,7 @@
   --spacing-4xl: 10rem;    /* 160px */
 
   /* ---- PADDING DE SEÇÃO ---- */
-  --section-padding-y: var(--spacing-xl);   /* 64px top/bottom padrão */
+  --section-padding-y: var(--spacing-2xl);  /* 96px top/bottom padrão — luxury breathing room */
   --section-padding-x: 1.5rem;              /* Mobile */
 
   /* ---- CONTAINERS ---- */
@@ -123,8 +133,12 @@
 
 html {
   scroll-behavior: smooth;
-  /* Previne travamento de scroll ao abrir menu mobile */
   scroll-padding-top: 80px;
+  overflow-x: hidden;
+}
+
+html, body {
+  max-width: 100%;
 }
 
 body {
@@ -307,48 +321,80 @@ em,
    6. COMPONENTES GLOBAIS
    ============================================================================= */
 
-/* --- Botão Primário --- */
+/* --- Botão Primário — pill dourado com shimmer + glow pulse --- */
 .btn-primary {
-  background: var(--color-cta);
-  color: #ffffff !important;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(105deg, #D4A800 0%, #F2D000 30%, #FAE860 55%, #F5E030 75%, #D4A800 100%);
+  background-size: 200% 100%;
+  color: #1A1200 !important;
   font-family: var(--font-body);
   font-weight: 700;
   font-size: var(--text-xs);
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  padding: 16px 36px;
+  padding: 18px 44px;
   border: none;
-  border-radius: var(--radius-sm);
+  border-radius: 50px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  transition:
-    background  var(--duration-normal) var(--easing),
-    transform   var(--duration-fast)   var(--easing),
-    box-shadow  var(--duration-normal) var(--easing);
   white-space: nowrap;
   text-decoration: none;
+  animation: btn-glow-pulse 3s ease-in-out infinite;
+  transition:
+    background-position var(--duration-normal) var(--easing),
+    transform            var(--duration-fast)   var(--easing),
+    box-shadow           var(--duration-normal) var(--easing);
+  will-change: transform, box-shadow;
+}
+
+/* Faixa de shimmer que varre o botão */
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -120%;
+  width: 55%;
+  height: 220%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.18) 40%,
+    rgba(255, 255, 255, 0.32) 50%,
+    rgba(255, 255, 255, 0.18) 60%,
+    transparent 100%
+  );
+  transform: skewX(-15deg);
+  animation: btn-shimmer 3.5s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .btn-primary:hover {
-  background: var(--color-cta-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(201, 164, 88, 0.25);
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 32px rgba(242, 208, 0, 0.65),
+    0 0 0 4px rgba(242, 208, 0, 0.22);
+  animation-play-state: paused;
 }
 
 .btn-primary:active {
   transform: translateY(0);
+  box-shadow: 0 2px 12px rgba(242, 208, 0, 0.40);
 }
 
 .btn-primary:focus-visible {
   outline: 2px solid var(--color-gold);
-  outline-offset: 3px;
+  outline-offset: 4px;
 }
 
-/* --- Botão Secundário (outline) --- */
+/* --- Botão Secundário — pill outline dourado --- */
 .btn-secondary {
+  position: relative;
+  overflow: hidden;
   background: transparent;
   border: 1px solid var(--color-gold-dark);
   color: var(--color-gold);
@@ -357,25 +403,29 @@ em,
   font-size: var(--text-xs);
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  padding: 16px 36px;
-  border-radius: var(--radius-sm);
+  padding: 18px 44px;
+  border-radius: 50px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  white-space: nowrap;
+  text-decoration: none;
   transition:
     background    var(--duration-normal) var(--easing),
     border-color  var(--duration-normal) var(--easing),
-    transform     var(--duration-fast)   var(--easing);
-  white-space: nowrap;
-  text-decoration: none;
+    color         var(--duration-normal) var(--easing),
+    transform     var(--duration-fast)   var(--easing),
+    box-shadow    var(--duration-normal) var(--easing);
 }
 
 .btn-secondary:hover {
   background: var(--color-gold-muted);
   border-color: var(--color-gold);
-  transform: translateY(-1px);
+  color: var(--color-gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(190, 173, 133, 0.15);
 }
 
 .btn-secondary:active {
@@ -384,25 +434,71 @@ em,
 
 .btn-secondary:focus-visible {
   outline: 2px solid var(--color-gold);
-  outline-offset: 3px;
+  outline-offset: 4px;
 }
+
+/* --- Animações dos botões --- */
+
+/* Shimmer: faixa de luz que varre o botão da esquerda para direita */
+@keyframes btn-shimmer {
+  0%   { left: -120%; }
+  35%  { left: 140%; }
+  100% { left: 140%; }
+}
+
+/* Glow pulse: pulsação suave da sombra dourada */
+@keyframes btn-glow-pulse {
+  0%, 100% {
+    box-shadow:
+      0 4px 20px rgba(242, 208, 0, 0.40),
+      0 0 0 0 rgba(242, 208, 0, 0);
+  }
+  50% {
+    box-shadow:
+      0 6px 36px rgba(242, 208, 0, 0.70),
+      0 0 0 6px rgba(242, 208, 0, 0.14);
+  }
+}
+
 
 /* --- Tag / Badge --- */
 .tag {
   display: inline-flex;
   align-items: center;
-  background: var(--color-gold-muted);
-  border: 1px solid var(--color-gold-dark);
-  color: var(--color-gold);
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(212, 168, 0, 0.08) 0%, rgba(242, 208, 0, 0.04) 100%);
+  border: 1px solid rgba(200, 160, 32, 0.35);
+  color: #D4A800;
   font-family: var(--font-caps);
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  padding: 6px 14px;
+  letter-spacing: 0.22em;
+  padding: 7px 16px;
   border-radius: var(--radius-sm);
   line-height: 1;
   margin-bottom: var(--spacing-md);
+}
+
+/* Linha decorativa flanqueando o texto da tag */
+.tag::before,
+.tag::after {
+  content: '';
+  flex-shrink: 0;
+  width: 20px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #D4A800);
+  opacity: 0.7;
+}
+
+.tag::after {
+  background: linear-gradient(90deg, #D4A800, transparent);
+}
+
+/* Para tags inline que não precisam das linhas laterais (ex: navbar) */
+.tag--compact::before,
+.tag--compact::after {
+  display: none;
 }
 
 /* --- Separador de Seção --- */
@@ -410,6 +506,33 @@ em,
   border: none;
   border-top: 1px solid var(--color-border);
   margin: 0;
+}
+
+/* --- Divisores coloridos para transições de seção especiais --- */
+.section-divider--gold {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #D4A800 30%, #F2D000 50%, #D4A800 70%, transparent 100%);
+  opacity: 0.55;
+  margin: 0;
+}
+
+.section-divider--burdo {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--color-burdo) 40%, var(--color-burdo-light) 50%, var(--color-burdo) 60%, transparent 100%);
+  opacity: 0.5;
+  margin: 0;
+}
+
+/* --- Utilitários de cor de texto --- */
+.text-gold {
+  color: #F2D000;
+  font-style: italic;
+}
+
+.text-burdo {
+  color: var(--color-burdo-light);
 }
 
 
@@ -532,6 +655,21 @@ em,
     width: 100%;
     justify-content: center;
   }
+
+  .tag {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    gap: 6px;
+    padding: 6px 12px;
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .tag::before,
+  .tag::after {
+    display: none;
+  }
 }
 
 /* --- Mobile pequeno — até 480px --- */
@@ -570,6 +708,15 @@ em,
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  /* Remove shimmer e pulse dos botões */
+  .btn-primary {
+    animation: none !important;
+  }
+
+  .btn-primary::after {
+    display: none !important;
   }
 }
 

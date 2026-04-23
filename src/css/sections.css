@@ -12,6 +12,27 @@
 
 .section-problema {
   padding: var(--section-padding-y) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow atmosférico suave no topo da seção */
+.section-problema::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 400px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(190, 173, 133, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-problema .container {
+  position: relative;
+  z-index: 1;
 }
 
 .problema__header {
@@ -32,32 +53,61 @@
 
 .problema__item {
   position: relative;
+  overflow: hidden;
   border: 1px solid var(--color-border);
-  padding: var(--spacing-lg);
+  padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg);
   border-radius: var(--radius-md);
   transition:
     border-color var(--duration-normal) var(--easing),
-    box-shadow   var(--duration-normal) var(--easing);
+    box-shadow   var(--duration-normal) var(--easing),
+    background   var(--duration-normal) var(--easing);
   cursor: default;
+}
+
+/* Linha decorativa dourada no topo de cada card */
+.problema__item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-gold-dark), transparent);
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--easing);
 }
 
 .problema__item:hover {
   border-color: var(--color-gold-dark);
+  background: rgba(190, 173, 133, 0.02);
   box-shadow:
     0 0 0 1px var(--color-gold-dark),
     0 8px 32px rgba(201, 164, 88, 0.06);
 }
 
+.problema__item:hover::before {
+  opacity: 1;
+}
+
+/* Número como watermark dramático no canto */
 .problema__number {
   position: absolute;
-  bottom: var(--spacing-md);
-  right: var(--spacing-md);
-  font-family: var(--font-caps);
-  font-size: var(--text-xs);
-  font-weight: 500;
+  bottom: 12px;
+  right: 20px;
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 800;
   color: var(--color-gold);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  opacity: 0.07;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity var(--duration-normal) var(--easing);
+}
+
+.problema__item:hover .problema__number {
+  opacity: 0.12;
 }
 
 .problema__title {
@@ -83,6 +133,12 @@
   .problema__grid {
     grid-template-columns: 1fr;
   }
+
+  .problema__number {
+    font-size: 2rem;
+    bottom: 8px;
+    right: 14px;
+  }
 }
 
 
@@ -92,6 +148,7 @@
 
 #solucao {
   padding: var(--section-padding-y) 0;
+  background: var(--color-bg-warm);
 }
 
 .solucao__inner {
@@ -136,17 +193,23 @@
   width: 100%;
   max-width: 380px;
   background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   overflow: hidden;
+  /* Gradient border via background-clip */
+  background:
+    linear-gradient(var(--color-bg-card), var(--color-bg-card)) padding-box,
+    linear-gradient(160deg, var(--color-gold-dark) 0%, var(--color-border) 40%, var(--color-border) 60%, var(--color-gold-dark) 100%) border-box;
+  border: 1px solid transparent;
   transition:
-    border-color var(--duration-normal) var(--easing),
-    box-shadow   var(--duration-normal) var(--easing);
+    background var(--duration-slow) var(--easing),
+    box-shadow  var(--duration-normal) var(--easing);
 }
 
 .solucao__mentor-card:hover {
-  border-color: var(--color-gold-dark);
-  box-shadow: 0 8px 32px rgba(201, 164, 88, 0.08);
+  background:
+    linear-gradient(var(--color-bg-card), var(--color-bg-card)) padding-box,
+    linear-gradient(160deg, var(--color-gold) 0%, var(--color-gold-dark) 40%, var(--color-gold-dark) 60%, var(--color-gold) 100%) border-box;
+  box-shadow: 0 12px 40px rgba(201, 164, 88, 0.12);
 }
 
 .solucao__mentor-photo {
@@ -255,8 +318,14 @@
   display: grid;
   grid-template-columns: auto 1fr;
   gap: var(--spacing-sm);
-  padding: var(--spacing-lg) 0;
+  padding: var(--spacing-lg) var(--spacing-md) var(--spacing-lg) 0;
   border-bottom: 1px solid var(--color-border);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  transition: background var(--duration-normal) var(--easing);
+}
+
+.protocolo__list-item:hover {
+  background: rgba(190, 173, 133, 0.025);
 }
 
 .protocolo__list-item:last-child {
@@ -266,7 +335,7 @@
 .protocolo__arrow {
   font-family: var(--font-body);
   font-size: var(--text-xl);
-  color: var(--color-gold);
+  color: #D4A800;
   line-height: 1.5;
   flex-shrink: 0;
 }
@@ -334,8 +403,26 @@
    ============================================================================= */
 
 #metodologia {
-  padding: var(--section-padding-y) 0;
+  padding: var(--spacing-2xl) 0;
+  background: linear-gradient(160deg, #0F0D07 0%, #1C1A0C 35%, #211E0E 50%, #1C1A0C 65%, #0F0D07 100%);
+  position: relative;
+  overflow: hidden;
 }
+
+/* Linha decorativa topo/base da seção */
+#metodologia::before,
+#metodologia::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #D4A800 30%, #F2D000 50%, #D4A800 70%, transparent 100%);
+  opacity: 0.3;
+}
+
+#metodologia::before { top: 0; }
+#metodologia::after  { bottom: 0; }
 
 .metodologia__header {
   text-align: center;
@@ -343,6 +430,13 @@
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Destaque do título dentro da seção bordô */
+#metodologia .section-heading {
+  font-size: var(--text-5xl);
+  font-weight: 800;
+  letter-spacing: -0.03em;
 }
 
 .metodologia__header .section-heading {
@@ -368,8 +462,8 @@
 
 .metodologia__card {
   position: relative;
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  background: rgba(212, 168, 0, 0.04);
+  border: 1px solid rgba(200, 160, 32, 0.15);
   padding: var(--spacing-lg);
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -380,10 +474,10 @@
 }
 
 .metodologia__card:hover {
-  border-color: var(--color-gold-dark);
+  border-color: rgba(200, 160, 32, 0.40);
   box-shadow:
-    0 0 0 1px var(--color-gold-dark),
-    0 8px 32px rgba(201, 164, 88, 0.06);
+    0 0 0 1px rgba(200, 160, 32, 0.25),
+    0 8px 32px rgba(212, 168, 0, 0.08);
 }
 
 /* Numeração grande decorativa — posição absoluta canto inferior direito */
@@ -441,6 +535,26 @@
 
 #diferenciais {
   padding: var(--section-padding-y) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+#diferenciais::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 300px;
+  background: radial-gradient(ellipse at 50% 100%, rgba(190, 173, 133, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#diferenciais .container {
+  position: relative;
+  z-index: 1;
 }
 
 .diferenciais__header {
@@ -482,13 +596,30 @@
 
 .diferenciais__card-icon {
   margin-bottom: var(--spacing-md);
-  width: 24px;
-  height: 24px;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, rgba(212, 168, 0, 0.10) 0%, rgba(242, 208, 0, 0.05) 100%);
+  border: 1px solid rgba(200, 160, 32, 0.25);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition:
+    background   var(--duration-normal) var(--easing),
+    border-color var(--duration-normal) var(--easing),
+    box-shadow   var(--duration-normal) var(--easing);
+}
+
+.diferenciais__card:hover .diferenciais__card-icon {
+  background: linear-gradient(135deg, rgba(212, 168, 0, 0.18) 0%, rgba(242, 208, 0, 0.10) 100%);
+  border-color: rgba(200, 160, 32, 0.45);
+  box-shadow: 0 0 12px rgba(242, 208, 0, 0.12);
 }
 
 .diferenciais__card-icon svg {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
 }
 
 .diferenciais__card-title {
@@ -523,6 +654,28 @@
 
 #depoimentos {
   padding: var(--section-padding-y) 0;
+  background: var(--color-bg-elevated);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow atmosférico central na seção depoimentos */
+#depoimentos::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 350px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(190, 173, 133, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#depoimentos .container {
+  position: relative;
+  z-index: 1;
 }
 
 .depoimentos__header {
@@ -544,24 +697,66 @@
 }
 
 .depoimentos__card {
+  position: relative;
+  overflow: hidden;
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
-  padding: var(--spacing-lg);
+  padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg);
   border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
   transition:
     border-color var(--duration-normal) var(--easing),
-    box-shadow   var(--duration-normal) var(--easing);
+    box-shadow   var(--duration-normal) var(--easing),
+    background   var(--duration-normal) var(--easing);
   cursor: default;
+}
+
+/* Aspas decorativas — watermark dourado no canto superior esquerdo */
+.depoimentos__card::before {
+  content: '\201C';
+  position: absolute;
+  top: -8px;
+  left: 16px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 7rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-gold);
+  opacity: 0.1;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity var(--duration-normal) var(--easing);
+}
+
+/* Linha dourada decorativa no topo do card */
+.depoimentos__card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: var(--spacing-lg);
+  right: var(--spacing-lg);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold-dark), transparent);
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--easing);
 }
 
 .depoimentos__card:hover {
   border-color: var(--color-gold-dark);
+  background: rgba(190, 173, 133, 0.015);
   box-shadow:
     0 0 0 1px var(--color-gold-dark),
-    0 8px 32px rgba(201, 164, 88, 0.08);
+    0 12px 40px rgba(201, 164, 88, 0.1);
+}
+
+.depoimentos__card:hover::before {
+  opacity: 0.18;
+}
+
+.depoimentos__card:hover::after {
+  opacity: 1;
 }
 
 .depoimentos__stars {
@@ -624,8 +819,25 @@
    ============================================================================= */
 
 #numeros {
-  padding: var(--spacing-xl) 0;
+  padding: var(--spacing-2xl) 0;
+  background: linear-gradient(160deg, #0F0D07 0%, #1C1A0C 35%, #211E0E 50%, #1C1A0C 65%, #0F0D07 100%);
+  position: relative;
+  overflow: hidden;
 }
+
+#numeros::before,
+#numeros::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #D4A800 30%, #F2D000 50%, #D4A800 70%, transparent 100%);
+  opacity: 0.3;
+}
+
+#numeros::before { top: 0; }
+#numeros::after  { bottom: 0; }
 
 /* --- Grid centralizado --- */
 .numeros__grid {
@@ -650,20 +862,24 @@
 
 .numeros__value {
   font-family: var(--font-display);
-  font-size: 5rem; /* 80px */
+  font-size: 7rem;
   font-weight: 800;
-  color: var(--color-text-primary);
+  background: linear-gradient(135deg, #D4A800 0%, #F2D000 45%, #FAE860 60%, #D4A800 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   line-height: 1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  filter: drop-shadow(0 0 20px rgba(242, 208, 0, 0.25));
 }
 
 .numeros__label {
   font-family: var(--font-caps);
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--color-text-secondary);
+  letter-spacing: 0.18em;
+  color: var(--color-gold-light);
   line-height: 1.5;
   max-width: 160px;
 }
@@ -690,7 +906,7 @@
   }
 
   .numeros__value {
-    font-size: var(--text-5xl);
+    font-size: var(--text-6xl); /* 80px em mobile — mantém impacto */
   }
 }
 
@@ -721,10 +937,19 @@
 /* --- Item individual --- */
 .faq__item {
   border-bottom: 1px solid var(--color-border);
+  transition: background var(--duration-normal) var(--easing);
+  border-radius: var(--radius-md);
+  padding: 0 var(--spacing-sm);
+  margin: 0 calc(-1 * var(--spacing-sm));
 }
 
 .faq__item:first-child {
   border-top: 1px solid var(--color-border);
+}
+
+/* Item expandido — destaque sutil */
+.faq__item:has([aria-expanded="true"]) {
+  background: rgba(190, 173, 133, 0.025);
 }
 
 /* --- Botão da pergunta --- */
