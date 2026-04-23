@@ -412,15 +412,24 @@
       linear-gradient(to bottom, rgba(8, 7, 6, 0.75) 0%, transparent 25%);
   }
 
-  /* Badge do protocolo — permite quebra de linha no mobile */
-  .hero__protocol-badge {
-    flex-wrap: wrap;
-    gap: 8px;
+  /* Badges — mesma aparência visual do desktop, adaptados para mobile */
+  .hero__tag {
+    width: 100%;
   }
 
-  .hero__protocol-name,
-  .hero__protocol-type {
+  .hero__protocol-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .hero__protocol-name {
+    font-size: 10px;
     white-space: normal;
+    letter-spacing: 0.16em;
   }
 
   .hero__protocol-divider {
@@ -428,15 +437,26 @@
   }
 
   .hero__protocol-type {
-    width: 100%;
-    padding-top: 2px;
+    font-size: 9px;
+    white-space: normal;
+    letter-spacing: 0.12em;
+    padding-top: 4px;
     border-top: 1px solid rgba(200, 160, 32, 0.20);
+    width: 100%;
   }
 
-  /* Badge da data — empilha em duas linhas se necessário */
   .hero__date-badge {
+    display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .hero__date-range {
+    font-size: 10px;
+    white-space: nowrap;
   }
 
   .hero__date-dot {
@@ -444,6 +464,8 @@
   }
 
   .hero__date-detail {
+    font-size: 11px;
+    white-space: normal;
     width: 100%;
   }
 }
