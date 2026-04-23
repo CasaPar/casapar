@@ -54,7 +54,9 @@
 .problema__item {
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(200, 160, 32, 0.18);
+  border-left: 3px solid rgba(200, 160, 32, 0.45);
   padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg);
   border-radius: var(--radius-md);
   transition:
@@ -64,25 +66,26 @@
   cursor: default;
 }
 
-/* Linha decorativa dourada no topo de cada card */
+/* Linha dourada sempre visível no topo */
 .problema__item::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--color-gold-dark), transparent);
-  opacity: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(200, 160, 32, 0.6), transparent);
+  opacity: 1;
   transition: opacity var(--duration-normal) var(--easing);
 }
 
 .problema__item:hover {
-  border-color: var(--color-gold-dark);
-  background: rgba(190, 173, 133, 0.02);
+  border-color: rgba(200, 160, 32, 0.55);
+  border-left-color: #D4A800;
+  background: rgba(212, 168, 0, 0.04);
   box-shadow:
-    0 0 0 1px var(--color-gold-dark),
-    0 8px 32px rgba(201, 164, 88, 0.06);
+    0 8px 32px rgba(212, 168, 0, 0.08),
+    inset 0 0 40px rgba(212, 168, 0, 0.02);
 }
 
 .problema__item:hover::before {
@@ -115,7 +118,7 @@
   font-family: var(--font-body);
   font-size: var(--text-base);
   font-weight: 700;
-  color: var(--color-text-primary);
+  color: #D4A800;
   margin-bottom: var(--spacing-xs);
 }
 
@@ -575,8 +578,9 @@
 }
 
 .diferenciais__card {
-  background: transparent;
-  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(200, 160, 32, 0.18);
+  border-left: 3px solid rgba(200, 160, 32, 0.40);
   padding: var(--spacing-lg);
   border-radius: var(--radius-md);
   transition:
@@ -587,11 +591,11 @@
 }
 
 .diferenciais__card:hover {
-  border-color: var(--color-gold-dark);
-  background: var(--color-bg-card);
+  border-color: rgba(200, 160, 32, 0.50);
+  border-left-color: #D4A800;
+  background: rgba(212, 168, 0, 0.04);
   box-shadow:
-    0 0 0 1px var(--color-gold-dark),
-    0 8px 32px rgba(201, 164, 88, 0.06);
+    0 8px 32px rgba(212, 168, 0, 0.08);
 }
 
 .diferenciais__card-icon {
@@ -626,7 +630,7 @@
   font-family: var(--font-display);
   font-size: var(--text-xl);
   font-weight: 500;
-  color: var(--color-text-primary);
+  color: #D4A800;
   line-height: 1.25;
   margin-bottom: var(--spacing-sm);
 }
@@ -699,8 +703,8 @@
 .depoimentos__card {
   position: relative;
   overflow: hidden;
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(200, 160, 32, 0.18);
   padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg);
   border-radius: var(--radius-md);
   display: flex;
@@ -724,35 +728,34 @@
   font-weight: 700;
   line-height: 1;
   color: var(--color-gold);
-  opacity: 0.1;
+  opacity: 0.22;
   pointer-events: none;
   user-select: none;
   transition: opacity var(--duration-normal) var(--easing);
 }
 
-/* Linha dourada decorativa no topo do card */
+/* Linha dourada decorativa no topo do card — sempre visível */
 .depoimentos__card::after {
   content: '';
   position: absolute;
   top: 0;
-  left: var(--spacing-lg);
-  right: var(--spacing-lg);
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-gold-dark), transparent);
-  opacity: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #D4A800 0%, rgba(212, 168, 0, 0.3) 60%, transparent 100%);
+  opacity: 1;
   transition: opacity var(--duration-normal) var(--easing);
 }
 
 .depoimentos__card:hover {
-  border-color: var(--color-gold-dark);
-  background: rgba(190, 173, 133, 0.015);
+  border-color: rgba(200, 160, 32, 0.45);
+  background: rgba(212, 168, 0, 0.03);
   box-shadow:
-    0 0 0 1px var(--color-gold-dark),
-    0 12px 40px rgba(201, 164, 88, 0.1);
+    0 12px 40px rgba(212, 168, 0, 0.10);
 }
 
 .depoimentos__card:hover::before {
-  opacity: 0.18;
+  opacity: 0.32;
 }
 
 .depoimentos__card:hover::after {
