@@ -68,7 +68,6 @@
   inset: 0;
   z-index: -2;
   background:
-    /* Gradiente diagonal principal — "dois mundos" */
     linear-gradient(
       108deg,
       rgba(8, 7, 6, 1.00)  0%,
@@ -79,21 +78,18 @@
       rgba(8, 7, 6, 0.10)  80%,
       rgba(8, 7, 6, 0.02) 100%
     ),
-    /* Brilho dourado suave onde as alianças aparecem */
     radial-gradient(
       ellipse at 72% 52%,
       rgba(201, 164, 88, 0.14) 0%,
       rgba(201, 164, 88, 0.05) 45%,
       transparent 65%
     ),
-    /* Vinheta inferior — ancora o conteúdo no fundo */
     linear-gradient(
       to top,
       rgba(8, 7, 6, 0.92) 0%,
       rgba(8, 7, 6, 0.55) 12%,
       transparent 35%
     ),
-    /* Vinheta superior — funde com navbar */
     linear-gradient(
       to bottom,
       rgba(8, 7, 6, 0.75) 0%,
@@ -284,7 +280,7 @@
   font-family: var(--font-body);
   font-size: 11px;
   font-weight: 500;
-  color: var(--color-text-muted);
+  color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   display: flex;

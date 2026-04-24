@@ -724,7 +724,7 @@
   top: -8px;
   left: 16px;
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 7rem;
+  font-size: 4.5rem;
   font-weight: 700;
   line-height: 1;
   color: var(--color-gold);
@@ -865,7 +865,7 @@
 
 .numeros__value {
   font-family: var(--font-display);
-  font-size: 7rem;
+  font-size: 4.5rem;
   font-weight: 800;
   background: linear-gradient(135deg, #D4A800 0%, #F2D000 45%, #FAE860 60%, #D4A800 100%);
   -webkit-background-clip: text;
@@ -909,7 +909,7 @@
   }
 
   .numeros__value {
-    font-size: var(--text-6xl); /* 80px em mobile — mantém impacto */
+    font-size: 4.5rem;
   }
 }
 
