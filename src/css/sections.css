@@ -352,9 +352,6 @@
     order: -1;
   }
 
-  .protocolo__video-wrap {
-    aspect-ratio: 16 / 9;
-  }
 }
 
 /* --- Lista de entregáveis --- */
